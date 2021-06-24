@@ -75,3 +75,91 @@ export function brainGcd() {
     }
     }     
 }
+
+export function brainProgression() {
+    console.log('What number is missing in the progression?');
+
+    for (let j = 1; j <= 3; j += 1) {
+    let firstNum = Math.floor(Math.random() * 10);
+    let step = Math.floor(Math.random() * 10);
+    let count = Math.floor(Math.random() * 10);
+    if (count < 5) {
+        count = 5;
+    }
+    if (firstNum === 0) {
+        firstNum = 1;
+    }
+    if (step === 0) {
+        step = 1;
+    }
+
+    let progress = [firstNum];
+
+    for (let i = 1; i <= count; i += 1) {
+        progress[i] = firstNum + step;
+        firstNum += step;
+    }
+    
+    // случайное число от 0 до (count+1) случайный индекс массива
+    let rand = Math.random() * (count + 1);
+    rand = Math.floor(rand);
+    //правильный ответ:
+    const correctAnswer = progress[rand];
+    // заменяем правильный ответ на ... в прогрессии
+    progress[rand] = '...';
+    console.log(progress);
+
+    let answer = Number(readlineSync.question("Your answer: "));
+
+    if (correctAnswer === answer) {
+        console.log('Correct!');
+    }
+    if (correctAnswer !== answer) {
+        console.log(`'${answer}' is wrong answer. Correct answer was '${correctAnswer}'`);
+        console.log(`Let's try again, ${userName}!`);
+        j += 3;
+    }
+    if (j === 3) {
+        console.log(`Congratulations, ${userName}!`)
+    }
+    }   
+}
+
+export function brainPrime() {
+    console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+
+    for (let i = 1; i <= 3; i += 1) {
+        let num = Math.floor(Math.random() * 100);
+        console.log(`Question: ${num}`);
+        let answer = (readlineSync.question("Your answer: "));
+
+        
+        //Определяем простое ли число. Истина - простое, ложь - нет.
+        let flag = true;
+        for (let j = 2; j < num; j += 1) {
+	        if (num % j === 0) {
+		        flag = false; // если хотя бы один раз поделилось
+	        }
+        }
+
+        if (flag && answer === 'yes') {
+            console.log('Correct!');
+        } 
+        if (!flag && answer === 'no') {
+            console.log('Correct!');
+        }
+        if (flag && answer === 'no') {
+            console.log(`'${answer}' is wrong answer. Correct answer was 'yes'`);
+            console.log(`Let's try again, ${userName}!`);
+            i += 3;
+        }
+        if (!flag && answer === 'yes') {
+            console.log(`'${answer}' is wrong answer. Correct answer was 'no'`);
+            console.log(`Let's try again, ${userName}!`);
+            i += 3;
+        }
+        if (i === 3) {
+            console.log(`Congratulations, ${userName}!`)
+        }
+    }
+}
