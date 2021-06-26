@@ -2,6 +2,7 @@ import readlineSync from 'readline-sync';
 var userName = '';
 export function hello() {
 // Wait for user's response.
+console.log('Welcome to the Brain Games!');
 userName = readlineSync.question('May I have your name? ');
 console.log('Hi ' + userName + '!');
 }
@@ -31,11 +32,11 @@ export function brainCalc() {
         if (answer === answer1) {
             console.log('Correct!');
         }
-        if (i === 3) {
+        if (i === 3 && answer === answer1) {
             console.log(`Congratulations, ${userName}!`)
         }
         if (answer !== answer1) {
-            console.log(`'${answer1}' is wrong answer. Correct answer was '${answer}'`);
+            console.log(`'${answer}' is wrong answer. Correct answer was '${answer1}'`);
             console.log(`Let's try again, ${userName}!`);
             i += 3;
         }

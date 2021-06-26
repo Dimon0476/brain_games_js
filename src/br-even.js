@@ -12,27 +12,29 @@ export function brainEven() {
     console.log(`Question: ${num}`);
     let answer = readlineSync.question("Your answer: ");
     
+    let prov = false;
     if ((num % 2) === 0 && answer === 'yes') {
         console.log('Correct!');
+        prov = true;
     }
     if ((num % 2) === 1 && answer === 'no') {
         console.log('Correct!');
+        prov = true;
     }
-    if ((num % 2) === 1 && answer === 'yes') {
-        console.log(`'yes' is wrong answer. Correct answer was 'no'.`);
-        console.log(`Let's try again, ${userName}!`);
-        i += 3;
-    }
-    if ((num % 2) === 0 && answer === 'no') {
-        console.log(`'no' is wrong answer. Correct answer was 'yes'.`);
-        console.log(`Let's try again, ${userName}!`);
-        i += 3;
-    }
-    if (i === 3) {
+       
+    if (i === 3 && prov) {
         console.log(`Congratulations, ${userName}!`)
     }
+
+    let goodAnswer ='';
+    if (num % 2 === 0) {
+        goodAnswer = 'yes';
+    }
+    if (num % 2 !== 0) {
+        goodAnswer = 'no';
+    }
     if (answer !== 'yes' && answer !== 'no') {
-        console.log(`'${answer}' is wrong answer.`);
+        console.log(`'${answer}' is wrong answer. Correct answer was '${goodAnswer}'.`);
         console.log(`Let's try again, ${userName}!`);
         i += 3;
     }
