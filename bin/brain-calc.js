@@ -2,4 +2,4 @@
 import startGame from '../src/index.js';
 import calcGame from '../src/games/calc.js';
 
-startGame(calcGame)
+startGame(calcGame);
